@@ -5,96 +5,11 @@
 	<title>TestEndy</title>
 	<meta name="author" content="Дмитрий Жиляев">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<script
-			src="http://code.jquery.com/jquery-3.2.1.min.js"
-			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			crossorigin="anonymous"></script>
-	<style>
-		body {
-			font-family: Roboto, sans-serif;
-		}
-		hr {
-			box-sizing: content-box;
-			height: 0;
-			overflow: visible;
-			margin-top: 1rem;
-			margin-bottom: 1rem;
-			border: 0;
-			border-top: 1px solid rgba(0, 0, 0, 0.1);
-		}
-		.container {
-			margin-right: auto;
-			margin-left: auto;
-			padding-right: 15px;
-			padding-left: 15px;
-			width: 940px;
-		}
-		.row {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
-			align-items: center;
-		}
-
-		.btn-count {
-			width: 27px;
-			height: 27px;
-			background: none;
-			border: solid #ff0000 1px;
-			border-radius: 50%;
-			color: #ff0000;
-		}
-		.row[disabled] div:not(:last-child) ,
-		.btn-count[disabled]{
-			opacity: .5;
-		}
-		.btn-count[disabled]:hover{
-			cursor: not-allowed;
-		}
-		.btn-count:hover, .btn:hover{
-			cursor: pointer;
-		}
-		.count {
-			margin-left: 5px;
-			margin-right: 5px;
-		}
-		.btn {
-			border-radius: 10px;
-			padding: 5px 15px;
-			font-family: Roboto,sans-serif;
-		}
-		.btn.delete {
-			background: none;
-			border: solid #bfbfbf 1px;
-			color: grey;
-		}
-		.btn.return {
-			border: none;
-			color: white;
-			background: #ff0000;
-		}
-		.progress {
-			display: -ms-flexbox;
-			display: flex;
-			overflow: hidden;
-			font-size: 0.75rem;
-			width: 244px;
-			height: 25px;
-			line-height: 1rem;
-			text-align: center;
-			background: url("img/r.png") #fff no-repeat right;
-			border-radius: 10px;
-			/*border: solid 1px #bfbfbf;*/
-		}
-		.progress-bar {
-			line-height: 1rem;
-			background-color: #ff0000;
-		}
-	</style>
+	<link href="css/my.css" rel="stylesheet">
 </head>
 <body>
 <br>
-
+<br>
 <section class="container">
 	<hr>
 	<div class="row">
@@ -158,6 +73,8 @@
 	</div>
 	<hr>
 </section>
+<br>
+<br>
 <section class="container">
 	<div class="row" style="justify-content: flex-start;">
 		<p style="margin-right: 10%;">№3208957205790</p>
@@ -178,49 +95,6 @@
 		</div>
 	</div>
 </section>
-<script>
-	/* Progress */
-	let bars = document.getElementsByClassName("progress-bar");
-	let titles = document.getElementsByClassName("progress-title");
-	for(let i=0;i<bars.length;i++){
-		bars[i].style.width = bars[i].dataset.progress + "%";
-		titles[i].innerHTML = bars[i].style.width;
-		titles[i].style.marginLeft = (bars[i].dataset.progress-bars[i].dataset.progress/8)+"%";
-	}
-	/* btn */
-    function return_item(el) {
-        el.classList.remove('return');
-        el.classList.add('delete');
-        el.innerText = "Удалить";
-        el.parentNode.parentNode.removeAttribute('disabled');
-        el.removeAttribute('onclick');
-        el.setAttribute("onclick","delete_item(this)");
-    }
-    function delete_item(el) {
-        el.classList.remove('delete');
-        el.classList.add('return');
-        el.innerText = "Вернуть";
-        el.parentNode.parentNode.setAttribute('disabled','true');
-        el.removeAttribute('onclick');
-        el.setAttribute("onclick","return_item(this)");
-    }
-    /* btn-count */
-    let counts = document.getElementsByClassName("count");
-    let decrements = document.querySelectorAll(".btn-count[value='-']");
-    let increments = document.querySelectorAll(".btn-count[value='+']");
-    for(let i=0;i<counts.length;i++){
-		if(counts[i].innerText==='1')
-		    decrements[i].setAttribute('disabled','true');
-		increments[i].onclick = function () {
-            decrements[i].removeAttribute('disabled');
-            counts[i].innerText = +(counts[i].innerText)+1;
-        };
-        decrements[i].onclick = function () {
-            counts[i].innerText = +(counts[i].innerText)-1;
-            if(counts[i].innerText==='1')
-                decrements[i].setAttribute('disabled','true');
-        }
-    }
-</script>
+<script src="js/my.js"></script>
 </body>
 </html>

@@ -1,0 +1,80 @@
+body {
+	font-family: Roboto, sans-serif;
+}
+hr {
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	width: 940px;
+}
+.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.btn-count {
+	width: 27px;
+	height: 27px;
+	background: none;
+	border: solid #ff0000 1px;
+	border-radius: 50%;
+	color: #ff0000;
+}
+.row[disabled] div:not(:last-child) ,
+.btn-count[disabled]{
+	opacity: .5;
+}
+.btn-count[disabled]:hover{
+	cursor: not-allowed;
+}
+.btn-count:hover, .btn:hover{
+	cursor: pointer;
+}
+.count {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.btn {
+	border-radius: 10px;
+	padding: 5px 15px;
+	font-family: Roboto,sans-serif;
+}
+.btn.delete {
+	background: none;
+	border: solid #bfbfbf 1px;
+	color: grey;
+}
+.btn.return {
+	border: none;
+	color: white;
+	background: #ff0000;
+}
+.progress {
+	display: -ms-flexbox;
+	display: flex;
+	overflow: hidden;
+	font-size: 0.75rem;
+	width: 244px;
+	height: 25px;
+	line-height: 1rem;
+	text-align: center;
+	background: url("../img/r.png") #fff no-repeat right;
+	border-radius: 10px;
+	/*border: solid 1px #bfbfbf;*/
+}
+.progress-bar {
+	line-height: 1rem;
+	background-color: #ff0000;
+}
