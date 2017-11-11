@@ -48,6 +48,9 @@
 		.btn-count[disabled]{
 			opacity: .5;
 		}
+		.btn-count[disabled]:hover{
+			cursor: not-allowed;
+		}
 		.btn-count:hover, .btn:hover{
 			cursor: pointer;
 		}
@@ -201,13 +204,22 @@
         el.removeAttribute('onclick');
         el.setAttribute("onclick","return_item(this)");
     }
-    /* Additional */
+    /* btn-count */
     let counts = document.getElementsByClassName("count");
     let decrements = document.querySelectorAll(".btn-count[value='-']");
+    let increments = document.querySelectorAll(".btn-count[value='+']");
     for(let i=0;i<counts.length;i++){
-		if(counts[i].innerText==='1'){
+		if(counts[i].innerText==='1')
 		    decrements[i].setAttribute('disabled','true');
-		}
+		increments[i].onclick = function () {
+            decrements[i].removeAttribute('disabled');
+            counts[i].innerText = +(counts[i].innerText)+1;
+        };
+        decrements[i].onclick = function () {
+            counts[i].innerText = +(counts[i].innerText)-1;
+            if(counts[i].innerText==='1')
+                decrements[i].setAttribute('disabled','true');
+        }
     }
 </script>
 </body>
