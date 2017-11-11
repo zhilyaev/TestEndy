@@ -75,18 +75,13 @@
 			height: 25px;
 			line-height: 1rem;
 			text-align: center;
-			background-color: #fff;
+			background: url("img/r.png") #fff no-repeat right;
 			border-radius: 10px;
-			border: solid 1px #bfbfbf;
+			/*border: solid 1px #bfbfbf;*/
 		}
-
 		.progress-bar {
 			line-height: 1rem;
-			color: #fff;
-			height: 30px;
 			background-color: #ff0000;
-			border: none;
-			transition: width 0.6s ease;
 		}
 	</style>
 </head>
@@ -111,7 +106,7 @@
 			<input type="button" class="btn-cart" value="+">
 		</div>
 		<div>
-			<button type="button" class="btn delete">Удалить</button>
+			<button type="button" onclick="delete_item(this)" class="btn delete">Удалить</button>
 		</div>
 	</div>
 	<hr>
@@ -131,7 +126,7 @@
 			<input type="button" class="btn-cart" value="+">
 		</div>
 		<div>
-			<button type="button" class="btn delete">Удалить</button>
+			<button type="button" onclick="delete_item(this)" class="btn delete">Удалить</button>
 		</div>
 	</div>
 	<hr>
@@ -151,7 +146,7 @@
 				<input type="button" class="btn-cart" value="+">
 		</div>
 		<div>
-			<button type="button" class="btn return">Вернуть</button>
+			<button type="button" onclick="return_item(this)" class="btn return">Вернуть</button>
 		</div>
 	</div>
 	<hr>
@@ -161,28 +156,42 @@
 		<p style="margin-right: 10%;">№3208957205790</p>
 		<div>
 			<div class="progress">
-				<span class="progress-bar" style="width: 40%;"></span>
+				<span class="progress-bar" data-progress="40"></span>
 			</div>
-			<small><b class="progress-title">40</b></small>
+			<small><b class="progress-title"></b></small>
 		</div>
 	</div>
 	<div class="row" style="justify-content: flex-start;">
 		<p style="margin-right: 10%;">№3208957205790</p>
 		<div>
 			<div class="progress">
-				<span class="progress-bar" style="width: 100%;"></span>
+				<span class="progress-bar" data-progress="100"></span>
 			</div>
-			<small><b class="progress-title">100</b></small>
+			<small><b class="progress-title"></b></small>
 		</div>
 	</div>
 </section>
 <script>
-	let bars = document.getElementsByClassName("bar");
+	let bars = document.getElementsByClassName("progress-bar");
 	let titles = document.getElementsByClassName("progress-title");
+	function return_item(el) {
+        el.classList.remove('return');
+        el.classList.add('delete');
+        el.innerText = "Удалить";
+        el.removeAttribute('onclick');
+        el.setAttribute("onclick","delete_item(this)");
+    }
+	function delete_item(el) {
+		el.classList.remove('delete');
+		el.classList.add('return');
+        el.innerText = "Вернуть";
+        el.removeAttribute('onclick');
+        el.setAttribute("onclick","return_item(this)");
+    }
 	for(let i=0;i<bars.length;i++){
-		//bars[i].style.width = bars[i].dataset.progress + "%";
-		//titles[i].innerHTML = bars[i].style.width;
-		//titles[i].style.marginLeft = (bars[i].dataset.progress-bars[i].dataset.progress/10)+"%";
+		bars[i].style.width = bars[i].dataset.progress + "%";
+		titles[i].innerHTML = bars[i].style.width;
+		titles[i].style.marginLeft = (bars[i].dataset.progress-bars[i].dataset.progress/8)+"%";
 	}
 </script>
 </body>
