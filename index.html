@@ -70,20 +70,23 @@
 			display: -ms-flexbox;
 			display: flex;
 			overflow: hidden;
-			height: 25px;
+			font-size: 0.75rem;
 			width: 244px;
+			height: 25px;
+			line-height: 1rem;
+			text-align: center;
+			background-color: #fff;
+			border-radius: 10px;
+			border: solid 1px #bfbfbf;
 		}
-		.progress::before{
-			background: #ff0000;
-			border-radius: 10px 0 0 10px;
-			width: attr(data-progress %);
-			content: ' ';
-		}
-		.progress::after{
-			border: solid #bfbfbf 1px;
-			border-radius: 0 10px 10px 0;
-			width: calc(100 - attr(data-progress %));
-			content: ' ';
+
+		.progress-bar {
+			line-height: 1rem;
+			color: #fff;
+			height: 30px;
+			background-color: #ff0000;
+			border: none;
+			transition: width 0.6s ease;
 		}
 	</style>
 </head>
@@ -157,25 +160,29 @@
 	<div class="row" style="justify-content: flex-start;">
 		<p style="margin-right: 10%;">№3208957205790</p>
 		<div>
-			<div class="progress" data-progress="40"></div>
-			<small><b class="progress-title"></b></small>
+			<div class="progress">
+				<span class="progress-bar" style="width: 40%;"></span>
+			</div>
+			<small><b class="progress-title">40</b></small>
 		</div>
 	</div>
 	<div class="row" style="justify-content: flex-start;">
 		<p style="margin-right: 10%;">№3208957205790</p>
 		<div>
-			<div class="progress" data-progress="100"></div>
-			<small><b class="progress-title"></b></small>
+			<div class="progress">
+				<span class="progress-bar" style="width: 100%;"></span>
+			</div>
+			<small><b class="progress-title">100</b></small>
 		</div>
 	</div>
 </section>
 <script>
-	let bars = document.getElementsByClassName("progress");
+	let bars = document.getElementsByClassName("bar");
 	let titles = document.getElementsByClassName("progress-title");
 	for(let i=0;i<bars.length;i++){
-		/*bars[i].style.width = bars[i].dataset.progress + "%";
-		titles[i].innerHTML = bars[i].style.width;
-		titles[i].style.marginLeft = (bars[i].dataset.progress-bars[i].dataset.progress/10)+"%";*/
+		//bars[i].style.width = bars[i].dataset.progress + "%";
+		//titles[i].innerHTML = bars[i].style.width;
+		//titles[i].style.marginLeft = (bars[i].dataset.progress-bars[i].dataset.progress/10)+"%";
 	}
 </script>
 </body>
