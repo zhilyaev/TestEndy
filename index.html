@@ -189,6 +189,7 @@
         el.classList.remove('return');
         el.classList.add('delete');
         el.innerText = "Удалить";
+        el.parentNode.parentNode.removeAttribute('disabled');
         el.removeAttribute('onclick');
         el.setAttribute("onclick","delete_item(this)");
     }
@@ -196,6 +197,7 @@
         el.classList.remove('delete');
         el.classList.add('return');
         el.innerText = "Вернуть";
+        el.parentNode.parentNode.setAttribute('disabled','true');
         el.removeAttribute('onclick');
         el.setAttribute("onclick","return_item(this)");
     }
