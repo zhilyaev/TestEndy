@@ -36,7 +36,7 @@
 			align-items: center;
 		}
 
-		.btn-cart {
+		.btn-count {
 			width: 27px;
 			height: 27px;
 			background: none;
@@ -44,7 +44,7 @@
 			border-radius: 50%;
 			color: #ff0000;
 		}
-		.btn-cart:hover, .btn:hover{
+		.btn-count:hover, .btn:hover{
 			cursor: pointer;
 		}
 		.count {
@@ -83,12 +83,13 @@
 			line-height: 1rem;
 			background-color: #ff0000;
 		}
+		.btn-count[value="-"]
 	</style>
 </head>
 <body>
 <br>
 
-<section id="cart" class="container">
+<section class="container">
 	<hr>
 	<div class="row">
 		<div>
@@ -101,9 +102,9 @@
 			Пеппероони, моцарелла, том...
 		</div>
 		<div>
-			<input type="button" class="btn-cart" value="-">
+			<input type="button" onclick="dec()" class="btn-count" value="-">
 			<span class="count">1</span>
-			<input type="button" class="btn-cart" value="+">
+			<input type="button" onclick="inc()" class="btn-count" value="+">
 		</div>
 		<div>
 			<button type="button" onclick="delete_item(this)" class="btn delete">Удалить</button>
@@ -121,9 +122,9 @@
 			Пеппероони, моцарелла, том...
 		</div>
 		<div>
-			<input type="button" class="btn-cart" value="-">
+			<input type="button" class="btn-count" value="-">
 			<span class="count">1</span>
-			<input type="button" class="btn-cart" value="+">
+			<input type="button" class="btn-count" value="+">
 		</div>
 		<div>
 			<button type="button" onclick="delete_item(this)" class="btn delete">Удалить</button>
@@ -141,9 +142,9 @@
 			Пеппероони, моцарелла, том...
 		</div>
 		<div>
-				<input type="button" class="btn-cart" value="-">
+				<input type="button" class="btn-count" value="-">
 				<span class="count">1</span>
-				<input type="button" class="btn-cart" value="+">
+				<input type="button" class="btn-count" value="+">
 		</div>
 		<div>
 			<button type="button" onclick="return_item(this)" class="btn return">Вернуть</button>
@@ -151,7 +152,7 @@
 	</div>
 	<hr>
 </section>
-<section id="progress" class="container">
+<section class="container">
 	<div class="row" style="justify-content: flex-start;">
 		<p style="margin-right: 10%;">№3208957205790</p>
 		<div>
@@ -172,27 +173,35 @@
 	</div>
 </section>
 <script>
+	/* Progress */
 	let bars = document.getElementsByClassName("progress-bar");
 	let titles = document.getElementsByClassName("progress-title");
-	function return_item(el) {
+	for(let i=0;i<bars.length;i++){
+		bars[i].style.width = bars[i].dataset.progress + "%";
+		titles[i].innerHTML = bars[i].style.width;
+		titles[i].style.marginLeft = (bars[i].dataset.progress-bars[i].dataset.progress/8)+"%";
+	}
+	/* btn */
+    function return_item(el) {
         el.classList.remove('return');
         el.classList.add('delete');
         el.innerText = "Удалить";
         el.removeAttribute('onclick');
         el.setAttribute("onclick","delete_item(this)");
     }
-	function delete_item(el) {
-		el.classList.remove('delete');
-		el.classList.add('return');
+    function delete_item(el) {
+        el.classList.remove('delete');
+        el.classList.add('return');
         el.innerText = "Вернуть";
         el.removeAttribute('onclick');
         el.setAttribute("onclick","return_item(this)");
     }
-	for(let i=0;i<bars.length;i++){
-		bars[i].style.width = bars[i].dataset.progress + "%";
-		titles[i].innerHTML = bars[i].style.width;
-		titles[i].style.marginLeft = (bars[i].dataset.progress-bars[i].dataset.progress/8)+"%";
-	}
+    /* Additional */
+    let counts = document.getElementsByClassName("count");
+    let decrements = document.querySelectorAll("btn-count[value='-']");
+    for(let i=0;i<counts.length;i++){
+
+    }
 </script>
 </body>
 </html>
