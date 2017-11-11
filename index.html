@@ -44,6 +44,10 @@
 			border-radius: 50%;
 			color: #ff0000;
 		}
+		.row[disabled] div:not(:last-child) ,
+		.btn-count[disabled]{
+			opacity: .5;
+		}
 		.btn-count:hover, .btn:hover{
 			cursor: pointer;
 		}
@@ -83,7 +87,6 @@
 			line-height: 1rem;
 			background-color: #ff0000;
 		}
-		.btn-count[value="-"]
 	</style>
 </head>
 <body>
@@ -102,9 +105,9 @@
 			Пеппероони, моцарелла, том...
 		</div>
 		<div>
-			<input type="button" onclick="dec()" class="btn-count" value="-">
+			<input type="button" class="btn-count" value="-">
 			<span class="count">1</span>
-			<input type="button" onclick="inc()" class="btn-count" value="+">
+			<input type="button" class="btn-count" value="+">
 		</div>
 		<div>
 			<button type="button" onclick="delete_item(this)" class="btn delete">Удалить</button>
@@ -131,7 +134,7 @@
 		</div>
 	</div>
 	<hr>
-	<div class="row">
+	<div disabled class="row">
 		<div>
 			<img src="img/pizza.png">
 		</div>
@@ -198,9 +201,11 @@
     }
     /* Additional */
     let counts = document.getElementsByClassName("count");
-    let decrements = document.querySelectorAll("btn-count[value='-']");
+    let decrements = document.querySelectorAll(".btn-count[value='-']");
     for(let i=0;i<counts.length;i++){
-
+		if(counts[i].innerText==='1'){
+		    decrements[i].setAttribute('disabled','true');
+		}
     }
 </script>
 </body>
