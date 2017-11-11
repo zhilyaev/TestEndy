@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TestEndy</title>
+	<meta name="author" content="Дмитрий Жиляев">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<script
+			src="http://code.jquery.com/jquery-3.2.1.min.js"
+			integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			crossorigin="anonymous"></script>
+	<style>
+		body {
+			font-family: Roboto, sans-serif;
+		}
+		hr {
+			box-sizing: content-box;
+			height: 0;
+			overflow: visible;
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			border: 0;
+			border-top: 1px solid rgba(0, 0, 0, 0.1);
+		}
+		.container {
+			margin-right: auto;
+			margin-left: auto;
+			padding-right: 15px;
+			padding-left: 15px;
+			width: 940px;
+		}
+		.row {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+		}
+
+		.btn-cart {
+			width: 27px;
+			height: 27px;
+			background: none;
+			border: solid #ff0000 1px;
+			border-radius: 50%;
+			color: #ff0000;
+		}
+		.btn-cart:hover, .btn:hover{
+			cursor: pointer;
+		}
+		.count {
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+		.btn {
+			border-radius: 10px;
+			padding: 5px 15px;
+			font-family: Roboto,sans-serif;
+		}
+		.btn.delete {
+			background: none;
+			border: solid #bfbfbf 1px;
+			color: grey;
+		}
+		.btn.return {
+			border: none;
+			color: white;
+			background: #ff0000;
+		}
+		.progress {
+			display: -ms-flexbox;
+			display: flex;
+			overflow: hidden;
+			height: 25px;
+			width: 244px;
+		}
+		.progress::before{
+			background: #ff0000;
+			border-radius: 10px 0 0 10px;
+			width: attr(data-progress %);
+			content: attr(data-progress) ' ';
+		}
+		.progress::after{
+			border: solid #bfbfbf 1px;
+			border-radius: 0 10px 10px 0;
+			content: attr(data-progress) ' ';
+		}
+	</style>
+</head>
+<body>
+<br>
+
+<section id="cart" class="container">
+	<hr>
+	<div class="row">
+		<div>
+			<img src="img/pizza.png">
+		</div>
+		<div>
+			<b>Пицца Пепперони на тон...</b>
+		</div>
+		<div>
+			Пеппероони, моцарелла, том...
+		</div>
+		<div>
+			<input type="button" class="btn-cart" value="-">
+			<span class="count">1</span>
+			<input type="button" class="btn-cart" value="+">
+		</div>
+		<div>
+			<button type="button" class="btn delete">Удалить</button>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div>
+			<img src="img/pizza.png">
+		</div>
+		<div>
+			<b>Пицца Пепперони на тон...</b>
+		</div>
+		<div>
+			Пеппероони, моцарелла, том...
+		</div>
+		<div>
+			<input type="button" class="btn-cart" value="-">
+			<span class="count">1</span>
+			<input type="button" class="btn-cart" value="+">
+		</div>
+		<div>
+			<button type="button" class="btn delete">Удалить</button>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div>
+			<img src="img/pizza.png">
+		</div>
+		<div>
+			<b>Пицца Пепперони на тон...</b>
+		</div>
+		<div>
+			Пеппероони, моцарелла, том...
+		</div>
+		<div>
+				<input type="button" class="btn-cart" value="-">
+				<span class="count">1</span>
+				<input type="button" class="btn-cart" value="+">
+		</div>
+		<div>
+			<button type="button" class="btn return">Вернуть</button>
+		</div>
+	</div>
+	<hr>
+</section>
+<section id="progress" class="container">
+	<div class="row" style="justify-content: flex-start;">
+		<p style="margin-right: 10%;">№3208957205790</p>
+		<div>
+			<div class="progress" data-progress="40"></div>
+			<small><b class="progress-title"></b></small>
+		</div>
+	</div>
+	<div class="row" style="justify-content: flex-start;">
+		<p style="margin-right: 10%;">№3208957205790</p>
+		<div>
+			<div class="progress" data-progress="100"></div>
+			<small><b class="progress-title"></b></small>
+		</div>
+	</div>
+</section>
+<script>
+	let bars = document.getElementsByClassName("progress");
+	let titles = document.getElementsByClassName("progress-title");
+	for(let i=0;i<bars.length;i++){
+		/*bars[i].style.width = bars[i].dataset.progress + "%";
+		titles[i].innerHTML = bars[i].style.width;
+		titles[i].style.marginLeft = (bars[i].dataset.progress-bars[i].dataset.progress/10)+"%";*/
+	}
+</script>
+</body>
+</html>
