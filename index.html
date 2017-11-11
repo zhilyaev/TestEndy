@@ -77,12 +77,13 @@
 			background: #ff0000;
 			border-radius: 10px 0 0 10px;
 			width: attr(data-progress %);
-			content: attr(data-progress) ' ';
+			content: ' ';
 		}
 		.progress::after{
 			border: solid #bfbfbf 1px;
 			border-radius: 0 10px 10px 0;
-			content: attr(data-progress) ' ';
+			width: calc(100 - attr(data-progress %));
+			content: ' ';
 		}
 	</style>
 </head>
